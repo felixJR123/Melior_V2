@@ -1,0 +1,20 @@
+manifest:
+  remotes:
+    - name: zmkfirmware
+      url-base: https://github.com/zmkfirmware
+    - name: felixJR123
+      url-base: https://github.com/felixJR123
+  projects:
+    - name: zmk
+      remote: zmkfirmware
+      revision: main
+      import: app/west.yml
+    - name: module-snake-dongle
+      remote: felixJR123                    
+      revision: zephyr-4.1  
+    - name: module-prospector
+      remote: felixJR123                    
+      revision: zephyr-4.1                               
+  self:
+    path: config
+    

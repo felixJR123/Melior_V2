@@ -1,0 +1,122 @@
+//                                                                                                        █                                                                                                                                                                                                       
+//                                                                                                       ██                                                                                                                                                                                                       
+//                                                                                                      █████                                                                                                                                                                                                     
+//                                                                                                  ████████████                                                                                                                                                                                                  
+//                                                                                                 ██████████████                                                                                                                                                                                                 
+//                                                                                                ████████████████                                                                                                                                                                                                
+//                                                                                            █████████████████████████                                                                                                                                                                                           
+//                                                                                                ████████████████                                                                                                                                                                                                
+//                                                                                                 ███████████████                                                                                                                                                                                                
+//                                                                                                  █████████████                                                                                                                                                                                                 
+//                                                                                          ███        ███████       ███                                                                                                                                                                                          
+//                                                                                         █████         ███        ██████                                                                                                                                                                                        
+//                                                                                       ███████         ██         ███████                                                                                                                                                                                       
+//                                                                                      █████████                  █████████                                                                                                                                                                                      
+//                                                                                    █████   ███                  ███   █████                                                                                                                                                                                    
+//                                                                                  █████      ███                ████     █████                                                                                                                                                                                  
+//                                                                                 █████       ███                ███       ██████                                                                                                                                                                                
+//                                                                               █████          ███              ███          ██████                                                                                                                                                                              
+//                                                                            █████              ██              ██              █████                                                                                                                                                                            
+//                                                                          █████                 ██            ██                 █████                                                                                                                                                                          
+//                                                                       █████                     ██          ██                     █████                                                                                                                                                                       
+//                                                                     █████                        █          █                        █████                                                                                                                                                                     
+//                                                                  █████                            █        █                             ████                                                                                                                                                                  
+//                                                              █████                                █        █                                █████                                                                                                                                                              
+//                                                           ████                                     █      █                                     ████                                                                                                                                                           
+//                                                       ████                                                                                          ████                                                                                                                                                       
+//                                                  ████                                                                                                    ████                                                                                                                                                  
+//                                              ███                                                                                                              ████                                                                                                                                             
+//                                        ██                                                                                                                            ██                                                                                                                                        
+//                                  █                                                                                                                                          █                                                                                                                                  
+//                                                                                                                                                                                                                                                                                                                                                                                                                
+//             █████               ████                ██████████████████                ███                            ███                  ██████████████████                  ███████████████████                                                                                                               
+//             ██████            ██████                ███                               ███                            ███                ███                ███                ███              ███                                                                                                              
+//             ███  ███         ██  ███                ███                               ███                            ███                ███                 ███               ███              ███                                                                                                              
+//             ███   ███      ███   ███                █████████████████                 ███                            ███                ██                  ███               ███             ████                                                                                                              
+//             ███     ███  ███     ███                ███                               ███                            ███                ██                  ███               ███      ████████                                                                                                                 
+//             ███       █████      ███                ███                               ███                            ███                ███                 ███               ███         ████                                                                                                                  
+//             ███        ██        ███                ███                               ███                            ███                 ███              ████                ███           ████                                                                                                                
+//             ███                  ███                ███████████████████               █████████████████              ███                    ███████████████                   ███              ████                 
+
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/backlight.h>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/pointing.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/outputs.h>
+
+&mt {
+    global-quick-tap;
+    tapping-term-ms = <300>;
+    quick-tap-ms = <200>;
+    flavor = "tap-preferred";
+};
+
+&lt {
+    tapping-term-ms = <250>;
+    quick-tap-ms = <200>;
+    flavor = "tap-preferred";
+};
+
+/ {
+    behaviors {
+//Tap Dance
+        td_quotes: td_quotes {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_QUOTES";
+            #binding-cells = <0>;
+            bindings = <&kp SQT>, <&kp DOUBLE_QUOTES>;
+
+            tapping-term-ms = <250>;
+        };
+
+//Hold Tap
+
+        ht_quotes: ht_quotes {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HT_QUOTES";
+            bindings = <&quotes>, <&td_quotes>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <250>;
+        };
+
+
+
+// Hold Tap Spanish Letters
+};
+
+//Combos
+    combos {
+        compatible = "zmk,combos";
+
+
+    };
+
+//Macros
+    macros {
+
+// Punctuation Macros
+        quotes: quotes {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp DQT &kp DQT &kp LEFT>;
+            label = "QUOTES";
+        };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        base_layer {
+            display-name = "Main";
+            bindings = <
+            &kp Q  &kp W  &kp F       &kp P         &kp B              &kp J        &kp L        &kp U                &kp Y                    &ht_quotes 0 0
+            &kp A  &kp R  &kp S       &kp T         &kp G              &kp M        &kp N        &kp E                &kp I                    &kp O
+&kp ESCAPE  &kp Z  &kp X  &kp C       &kp D         &kp V              &kp K        &kp H        &mt LESS_THAN COMMA  &mt GREATER_THAN PERIOD  &mt QUESTION SLASH  &mt COLON SEMICOLON
+                          &lt 3 CAPS  &lt 1 DELETE  &lt 2 BACKSPACE    &lt 2 SPACE  &lt 1 ENTER  &mo 4
+            >;
+        };
+    };
+};

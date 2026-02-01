@@ -1,0 +1,23 @@
+#include "melior.dtsi"
+
+/ {
+    kscan_dongle: kscan_dongle {
+        compatible = "zmk,kscan-mock";
+        columns = <0>;
+        rows = <0>;
+        events = <0>;
+    };
+};
+
+&default_layout  {
+    kscan = <&kscan_dongle>;
+};
+
+// == Input devices ==
+// Input devices on peripheral parts
+// Enabling input listeners and input-split to receive input events from peripherals
+&glidepoint_split_left { status = "okay"; };
+&glidepoint_listener_left { status = "okay"; };
+&glidepoint_split_right { status = "okay"; };
+&glidepoint_listener_right { status = "okay"; };
+

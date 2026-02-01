@@ -1,0 +1,20 @@
+# Copyright (c) 2020 The ZMK Contributors
+# SPDX-License-Identifier: MIT
+
+config SHIELD_MELIOR_CENTRAL_DONGLE
+	def_bool $(shields_list_contains,melior_central_dongle)
+
+config SHIELD_MELIOR_CENTRAL_SNAKE
+    def_bool $(shields_list_contains,melior_central_snake)
+
+config SHIELD_MELIOR_CENTRAL_LEFT
+    def_bool $(shields_list_contains,melior_central_left)
+
+config SHIELD_MELIOR_PERIPHERAL_LEFT
+    def_bool $(shields_list_contains,melior_peripheral_left)
+
+config SHIELD_MELIOR_PERIPHERAL_RIGHT
+    def_bool $(shields_list_contains,melior_peripheral_right)
+
+config SHIELD_MELIOR_CENTRAL_PROSPECTOR
+    def_bool $(shields_list_contains,melior_central_prospector)

@@ -1,0 +1,5 @@
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  build:
+    uses: felixJR123/Melior/.github/workflows/build-user-config.yml@main
