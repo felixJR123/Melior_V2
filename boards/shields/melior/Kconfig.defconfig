@@ -4,25 +4,6 @@
 
 if SHIELD_MELIOR_CENTRAL_SNAKE
 
-config ZMK_KEYBOARD_NAME
-    default "Melior"
-
-if ZMK_BACKLIGHT
-
-config PWM
-    default y
-
-config LED_PWM
-    default y
-
-endif # ZMK_BACKLIGHT
-
-config ZMK_POINTING
-    default y
-
-config ZMK_SPLIT_ROLE_CENTRAL
-    default y
-
 choice ZMK_DISPLAY_STATUS_SCREEN
     default ZMK_DISPLAY_STATUS_SCREEN_CUSTOM
 endchoice
@@ -54,35 +35,12 @@ endchoice
 
 endif # Snake Dongle
 
-
 # ---------------------
 # Prospector Dongle
 # ---------------------
 
 if SHIELD_MELIOR_CENTRAL_PROSPECTOR
 
-config ZMK_KEYBOARD_NAME
-    default "Melior"
-
-config ZMK_POINTING
-    default y
-
-if ZMK_BACKLIGHT
-
-config PWM
-    default y
-
-config LED_PWM
-    default y
-
-endif # ZMK_BACKLIGHT
-
-   
-config ZMK_SPLIT_ROLE_CENTRAL
-    default y
-
-config ZMK_USB
-    default y
 
 endif # Prospector Dongle
 
@@ -91,17 +49,6 @@ endif # Prospector Dongle
 # ---------------------
 
 if SHIELD_MELIOR_CENTRAL_DONGLE || SHIELD_MELIOR_CENTRAL_LEFT 
-
-config ZMK_KEYBOARD_NAME
-    default "Melior"
-
-config ZMK_POINTING
-    default y
-
-config ZMK_SPLIT_ROLE_CENTRAL
-    default y
-
-endif
 
 if ZMK_DISPLAY
 
@@ -130,6 +77,36 @@ choice LV_COLOR_DEPTH
 endchoice
 
 endif # Central Dongle and Central Left
+
+# ---------------------
+# For all dongles
+# ---------------------
+
+if SHIELD_MELIOR_CENTRAL_DONGLE ||  SHIELD_MELIOR_CENTRAL_SNAKE || SHIELD_MELIOR_CENTRAL_PROSPECTOR
+
+config ZMK_KEYBOARD_NAME
+    default "Melior"
+
+config ZMK_POINTING
+    default y
+
+config ZMK_SPLIT_ROLE_CENTRAL
+    default y
+
+if ZMK_BACKLIGHT
+
+config PWM
+    default y
+
+config LED_PWM
+    default y
+
+endif # ZMK_BACKLIGHT
+
+config ZMK_USB
+    default y
+
+endif # all dongles
 
 # ---------------------
 # For all the shields
